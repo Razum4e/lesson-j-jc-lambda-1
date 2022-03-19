@@ -7,13 +7,21 @@ public class Calculator {
     BinaryOperator<Integer> plus = (x, y) -> x + y;
     BinaryOperator<Integer> minus = (x, y) -> x - y;
     BinaryOperator<Integer> multiply = (x, y) -> x * y;
-    BinaryOperator<Integer> divide = new BinaryOperator<Integer>() {
-        @Override
-        public Integer apply(Integer x, Integer y) throws ArithmeticException{
-            if (y == 0) throw new ArithmeticException("Делить на ноль нельзя!");
-            return x / y;
-        }
-    };
+
+//    BinaryOperator<Integer> divide = (x, y) -> y != 0 ? x / y : 0 ;
+
+//    BinaryOperator<Integer> divide = new BinaryOperator<Integer>() {
+//        @Override
+//        public Integer apply(Integer integer, Integer integer2) {
+//            if (integer2 == 0) {
+//                System.out.println("ОШИБКА: деление на ноль");
+//                return integer;
+//            }
+//            return integer / integer2;
+//        }
+//    };
+
+    BinaryOperator<Integer> divide = (x, y) -> y != 0 ? x / y : x ;
     UnaryOperator<Integer> pow = x -> x * x;
     UnaryOperator<Integer> abs = x -> x > 0 ? x : x * -1;
     Predicate<Integer> isPositive = x -> x > 0;
